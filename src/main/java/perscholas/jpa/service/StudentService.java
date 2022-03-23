@@ -19,19 +19,24 @@ public class StudentService implements StudentDAO {
 
     public List<Student> getAllStudents() {
         EntityManager em = emFactoryObj.createEntityManager();
-        String sql = "SELECT s FROM Student";
+        String sql = "SELECT s from students s";
         TypedQuery<Student> query = em.createQuery(sql, Student.class);
         List<Student> result = query.getResultList();
+            for (int i = 0; i < result.size(); i++) {
+                System.out.println(result.get(i));
+            }//for
         return result;
     }//getAllStudents()
 
     public Student getStudentByEmail(String sEmail) {
         EntityManager em = emFactoryObj.createEntityManager();
 
-        String sql = "SELECT s FROM Student s WHERE s.sEmail = :sEmail";
+        String sql = "SELECT s FROM students s WHERE s.sEmail = :sEmail";
         TypedQuery<Student> query = em.createQuery(sql, Student.class);
         query.setParameter("sEmail", sEmail);
         try {
+            List<Student> result = query.getResultList();
+            System.out.println(result);
             return query.getSingleResult();
         }//try
         catch (Exception e) {
@@ -39,8 +44,8 @@ public class StudentService implements StudentDAO {
         }//catch
     }//getStudentByEmail
 
-    public boolean validateStudent(String sEmail, String sPassword) {
-        //logic here for validation
+    public boolean validateStudent(String sEmail, String sPass) {
+        String sql = "SELECT s FROM students s WHERE s.sEmail = :sEmail AND s.sPass = :sPass";
         return true;
     }//validateStudent()
 

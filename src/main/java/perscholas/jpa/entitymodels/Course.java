@@ -5,7 +5,7 @@ import java.util.List;
 
 
 
-@Entity
+@Entity (name = "courses")
 @Table(name = "courses")
 public class Course {
     @Id

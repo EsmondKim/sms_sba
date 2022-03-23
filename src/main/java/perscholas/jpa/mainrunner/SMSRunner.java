@@ -20,7 +20,23 @@ public class SMSRunner {
 
     public void run() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Test");
+        System.out.println("Are you a student?");
+        System.out.println("Type 1 to answer yes and continue, type 2 to quit.");
+        int stuCheck = sc.nextInt();
+        sc.nextLine();
+        if(stuCheck == 1) {
+            System.out.println("Enter your email.");
+            String sEmail = sc.nextLine();
+            System.out.println("Enter your password.");
+            String sPass = sc.nextLine();
+            if(studentService.validateStudent(sEmail, sPass));
+            studentService.getStudentCourses(sEmail);
+        }//if
+        else {
+            System.out.println("You have quit using the SMS system. Goodbye!");
+        }//else
+
+
     }//run()
 
     public static void main(String[] args) {

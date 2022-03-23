@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-@Entity
+@Entity (name = "students")
 @Table(name = "students")
 public class Student {
         @Id
@@ -19,7 +19,6 @@ public class Student {
         private String sPass;
 
         @Column(name = "sCourses")
-
         @ManyToMany(fetch=FetchType.LAZY)
         @JoinTable(name = "students_courses",
                 joinColumns = {
