@@ -1,13 +1,14 @@
 package perscholas.jpa.entitymodels;
-
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+
+
 
 @Entity
 @Table(name = "courses")
 public class Course {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cId")
     private int cId;
 
@@ -16,6 +17,9 @@ public class Course {
 
     @Column(name = "cInstructorName")
     private String cInstructorName;
+
+    @ManyToMany(mappedBy = "sCourses", fetch = FetchType.LAZY)
+    private List<Student> sCourses = new ArrayList<>();
 
     public Course() {
 
@@ -59,4 +63,5 @@ public class Course {
                 ", cInstructorName='" + cInstructorName + '\'' +
                 '}';
     }
+
 }// public class Course

@@ -32,4 +32,3 @@ insert into students (email, name, password) values ('htaffley6@columbia.edu', '
 insert into students (email, name, password) values ('aiannitti7@is.gd', 'Alexandra Iannitti', 'TWP4hf5j');
 insert into students (email, name, password) values ('ljiroudek8@sitemeter.com', 'Laryssa Jiroudek', 'bXRoLUP');
 insert into students (email, name, password) values ('cjaulme9@bing.com', 'Cahra Jaulme', 'FnVklVgC6r6');
-

@@ -4,19 +4,24 @@ import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.boot.archive.scan.spi.*;
 import perscholas.jpa.dao.CourseDAO;
 import perscholas.jpa.dao.StudentDAO;
 import perscholas.jpa.entitymodels.Student;
+import perscholas.jpa.service.CourseService;
+import perscholas.jpa.service.StudentService;
+import java.util.Scanner;
 
 import java.util.List;
 
 public class SMSRunner {
-    private CourseDAO courseDAO = new CourseDAO();
-    private StudentDAO studentDAOO = new StudentDAO();
+    private CourseService courseService = new CourseService();
+    private StudentService studentService = new StudentService();
 
     public void run() {
-       //methods()
-    }
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Test");
+    }//run()
 
     public static void main(String[] args) {
         new SMSRunner().run();
