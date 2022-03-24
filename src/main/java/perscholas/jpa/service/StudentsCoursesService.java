@@ -44,7 +44,10 @@ public class StudentsCoursesService implements StudentsCoursesDAO {
 
     public List<StudentCourse> getStudentCourses(String sEmail){
         EntityManager em = emFactoryObj.createEntityManager();
-        String sql = "SELECT c.cId, c.cName, c.cInstructorName FROM students s, courses c, students_courses sc WHERE c.cId = sc.cId AND s.sEmail = sc.sEmail";
+        String sql = "SELECT sc FROM students_courses sc";
+//        String sql = "SELECT c.cId, c.cName, c.cInstructorName \n" +
+//                "FROM students s, courses c, students_courses sc \n" +
+//                "WHERE :sEmail = sc.sEmail AND c.cId = sc.cId\n";
         TypedQuery<StudentCourse> query = em.createQuery(sql, StudentCourse.class);
         List<StudentCourse> result = query.getResultList();
         for (int i = 0; i < result.size(); i++) {

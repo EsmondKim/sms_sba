@@ -26,9 +26,9 @@ public class SMSRunner {
             String sPass = sc.nextLine();
             if(studentService.validateStudent(sEmail, sPass));
             System.out.println("You're validated!");
-            studentsCoursesService.getStudentCourses(sEmail);
 
-            courseService.getAllCourses();
+            studentsCoursesService.getStudentCourses(sEmail);
+//            courseService.getAllCourses();
             System.out.println("Enter the course ID for the course you would like to register for.");
             int courseId = sc.nextInt();
             sc.nextLine();

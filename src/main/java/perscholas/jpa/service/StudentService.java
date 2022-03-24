@@ -12,7 +12,6 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class StudentService implements StudentDAO {
-    private StudentsCoursesService studentsCoursesService = new StudentsCoursesService();
 
     private static final String PERSISTENCE_UNIT_NAME = "test";
 
@@ -103,5 +102,16 @@ public class StudentService implements StudentDAO {
         }//for
         return result;
     }//registerStudentToCourse()
+
+    public List<StudentCourse> getStudentCourses(String sEmail){
+        EntityManager em = emFactoryObj.createEntityManager();
+        String sql = "SELECT c.cId, c.cName, c.InstructorName FROM students s, courses c, students_courses sc WHERE c.cId = sc.cId AND s.sEmail = sc.sEmail";
+        TypedQuery<StudentCourse> query = em.createQuery(sql, StudentCourse.class);
+        List<StudentCourse> result = query.getResultList();
+        for (int i = 0; i < result.size(); i++) {
+            System.out.println(result.get(i));
+        }//for
+        return result;
+    }//getStudentCourses()
 
 }//public student StudentService

@@ -23,15 +23,15 @@ public class Student {
 //        @Column(name = "sCourses")
 //        private ArrayList<Course> sCourses = new ArrayList<>();
 
-        @ManyToMany(fetch=FetchType.LAZY)
-        @JoinTable(name = "students_courses",
-                joinColumns = {
-                    @JoinColumn(name = "sEmail", referencedColumnName = "sEmail",
-                        nullable = false, updatable = false)}, //@JoinColumns
-                inverseJoinColumns = {
-                    @JoinColumn(name = "cId", referencedColumnName = "cId",
-                        nullable = false, updatable = false)}) //inverseJoinColumns
-        private Set<Course> courses = new HashSet<>();
+//        @ManyToMany(fetch=FetchType.LAZY)
+//        @JoinTable(name = "students_courses",
+//                joinColumns = {
+//                    @JoinColumn(name = "sEmail", referencedColumnName = "sEmail",
+//                        nullable = false, updatable = false)}, //@JoinColumns
+//                inverseJoinColumns = {
+//                    @JoinColumn(name = "cId", referencedColumnName = "cId",
+//                        nullable = false, updatable = false)}) //inverseJoinColumns
+//        private Set<Course> courses = new HashSet<>();
 
     public Student() {
 

@@ -12,4 +12,5 @@ public interface StudentsCoursesDAO {
     public StudentCourse save(StudentCourse studentCourse);
 
     List<StudentCourse> getStudentCourses(String sEmail);
+
 }//StudentCoursesDAO

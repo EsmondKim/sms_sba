@@ -28,10 +28,8 @@ public class StudentCourse {
 
     }
 
-    public StudentCourse(Integer id, Student student, Course course, String sEmail, int cId) {
+    public StudentCourse(Integer id, String sEmail, int cId) {
         this.id = id;
-        this.student = student;
-        this.course = course;
         this.sEmail = sEmail;
         this.cId = cId;
     }
@@ -80,8 +78,6 @@ public class StudentCourse {
     public String toString() {
         return "StudentCourse{" +
                 "id=" + id +
-                ", student=" + student +
-                ", course=" + course +
                 ", sEmail='" + sEmail + '\'' +
                 ", cId=" + cId +
                 '}';

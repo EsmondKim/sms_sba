@@ -18,8 +18,8 @@ public class Course {
     @Column(name = "cInstructorName")
     private String cInstructorName;
 
-    @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY)
-    private Set<Student> students = new HashSet<>();
+//    @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY)
+//    private Set<Student> students = new HashSet<>();
 
     public Course() {
 
