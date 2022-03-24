@@ -2,7 +2,6 @@ package perscholas.jpa.service;
 
 import perscholas.jpa.dao.CourseDAO;
 import perscholas.jpa.entitymodels.Course;
-import perscholas.jpa.entitymodels.Student;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -35,10 +34,8 @@ public class CourseService implements CourseDAO {
         EntityManager em = emFactoryObj.createEntityManager();
         em.getTransaction().begin();
 
-        // save the movie to the database
         em.merge(course);
 
-        // commit the transaction
         em.getTransaction().commit();
         em.clear();
 
@@ -49,10 +46,8 @@ public class CourseService implements CourseDAO {
         EntityManager em = emFactoryObj.createEntityManager();
         em.getTransaction().begin();
 
-        // save the movie to the database
         em.persist(course);
 
-        // commit the transaction
         em.getTransaction().commit();
         em.clear();
 

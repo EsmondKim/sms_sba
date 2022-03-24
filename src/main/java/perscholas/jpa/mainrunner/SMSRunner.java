@@ -36,12 +36,7 @@ public class SMSRunner {
                             int courseId = sc.nextInt();
                             sc.nextLine();
                             System.out.println(courseId);
-                            Student student = studentService.findById(sEmail);
-                            Course course = courseService.findById(courseId);
-                            StudentCourse studentCourse = new StudentCourse();
-                            studentCourse.setStudent(student);
-                            studentCourse.setCourse(course);
-                            studentsCoursesService.save(studentCourse);
+                            studentService.registerStudentToCourse(sEmail, courseId);
                         }//if continueChoice == 1
                         else if (continueChoice == 2) {
                             System.out.println("Enter the course ID for the course you would like to delete from your schedule.");
@@ -54,8 +49,6 @@ public class SMSRunner {
                         }//else if continueChoice == 3
 
                     }//if validateStudent()
-//            studentService.registerStudentToCourse(sEmail, courseId);
-
         }//if validateStudent() true
         else {
             System.out.println("You have quit using the SMS system. Goodbye!");

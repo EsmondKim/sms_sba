@@ -14,9 +14,9 @@ public class StudentsCoursesService implements StudentsCoursesDAO {
 
     public StudentCourse findById(Integer id) {
         EntityManager em = emFactoryObj.createEntityManager();
-        String sql = "SELECT sc FROM StudentCourse sc WHERE sc.id = :studentCourseId";
+        String sql = "SELECT sc FROM students_courses sc WHERE sc.id = :id";
         TypedQuery<StudentCourse> query = em.createQuery(sql, StudentCourse.class);
-        query.setParameter("studentCourseId", id);
+        query.setParameter("id", id);
         try {
             return query.getSingleResult();
         }//try
@@ -43,7 +43,7 @@ public class StudentsCoursesService implements StudentsCoursesDAO {
         EntityManager em = emFactoryObj.createEntityManager();
         em.getTransaction().begin();
 
-        // save the actor to the database
+        // save the studentCourse to the database
         em.persist(studentCourse);
 
         // commit the transaction
@@ -59,13 +59,12 @@ public class StudentsCoursesService implements StudentsCoursesDAO {
         TypedQuery<StudentCourse> query = em.createQuery(sql, StudentCourse.class);
         List<StudentCourse> result = query.getResultList();
         System.out.printf("%-10s %-25s %-10s\n", "Course ID", "Student Email", "Course ID");
-        for (int i = 0; i < result.size(); i++) {
-            if(sEmail.equals(result.get(i).getsEmail()))
-            System.out.printf("%-10d %-25s %-25s\n", result.get(i).getCourse().getcId(), result.get(i).getCourse().getcName(), result.get(i).getCourse().getcInstructorName());
+        for (StudentCourse studentCourse : result) {
+            if (sEmail.equals(studentCourse.getsEmail()))
+                System.out.printf("%-10d %-25s %-25s\n", studentCourse.getCourse().getcId(), studentCourse.getCourse().getcName(), studentCourse.getCourse().getcInstructorName());
         }//for
         return result;
     }//getStudentCourses()
-
 
 }//StudentCoursesServices
 
