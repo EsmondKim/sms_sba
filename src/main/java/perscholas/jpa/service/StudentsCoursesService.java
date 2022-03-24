@@ -35,6 +35,7 @@ public class StudentsCoursesService implements StudentsCoursesDAO {
 
         int count = query.executeUpdate();
         em.getTransaction().commit();
+        System.out.printf("You've deleted course %d\n", id);
 
         return count;
     }

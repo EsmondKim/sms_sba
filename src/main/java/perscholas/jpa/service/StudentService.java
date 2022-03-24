@@ -106,6 +106,7 @@ public class StudentService implements StudentDAO {
         studentCourse.setStudent(student);
         studentCourse.setCourse(course);
         studentsCoursesService.save(studentCourse);
+        System.out.printf("You're registered for course %d.\n", cId);
     }
 
 }//public student StudentService
