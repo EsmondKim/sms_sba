@@ -50,8 +50,11 @@ public class StudentsCoursesService implements StudentsCoursesDAO {
 //                "WHERE :sEmail = sc.sEmail AND c.cId = sc.cId\n";
         TypedQuery<StudentCourse> query = em.createQuery(sql, StudentCourse.class);
         List<StudentCourse> result = query.getResultList();
+        System.out.printf("%-10s %-25s %-10s\n", "Course ID", "Student Email", "Course ID");
         for (int i = 0; i < result.size(); i++) {
-            System.out.println(result.get(i));
+            if(sEmail == result.get(i).getsEmail())
+                System.out.println("TRUE!\n");
+            System.out.printf("%-10d %-25s %-25s\n", result.get(i).getCourse().getcId(), result.get(i).getCourse().getcName(), result.get(i).getCourse().getcInstructorName());
         }//for
         return result;
     }//getStudentCourses()

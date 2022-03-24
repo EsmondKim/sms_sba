@@ -64,8 +64,9 @@ public class CourseService implements CourseDAO {
         String sql = "SELECT c FROM courses c";
         TypedQuery<Course> query = em.createQuery(sql, Course.class);
         List<Course> result = query.getResultList();
+        System.out.printf("%-10s %-25s %-25s\n", "Course Id", "Course Name", "Instructor Name");
         for (int i = 0; i < result.size(); i++) {
-            System.out.println(result.get(i));
+            System.out.printf("%-10d %-25s %-25s\n", result.get(i).getcId(), result.get(i).getcName(), result.get(i).getcInstructorName());
         }//for
         return result;
     }//getAllCourses()
