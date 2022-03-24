@@ -3,10 +3,7 @@ package perscholas.jpa.service;
 import perscholas.jpa.dao.StudentsCoursesDAO;
 import perscholas.jpa.entitymodels.StudentCourse;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.util.List;
 
 public class StudentsCoursesService implements StudentsCoursesDAO {
@@ -27,6 +24,20 @@ public class StudentsCoursesService implements StudentsCoursesDAO {
             return null;
         }//catch
     }//findById()
+
+    public int deleteById(int id) {
+        EntityManager em = emFactoryObj.createEntityManager();
+        em.getTransaction().begin();
+
+        String sql = "DELETE FROM students_courses sc WHERE sc.cId = :id";
+        Query query = em.createQuery(sql);
+        query.setParameter("id", id);
+
+        int count = query.executeUpdate();
+        em.getTransaction().commit();
+
+        return count;
+    }
 
     public StudentCourse save(StudentCourse studentCourse) {
         EntityManager em = emFactoryObj.createEntityManager();
