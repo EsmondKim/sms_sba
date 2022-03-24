@@ -91,10 +91,14 @@ public class StudentService implements StudentDAO {
         EntityManager em = emFactoryObj.createEntityManager();
         String sql = "SELECT s FROM students s WHERE s.sEmail = :sEmail AND s.sPass = :sPass";
         TypedQuery<Student> query = em.createQuery(sql, Student.class);
-        System.out.println(query);
-        if(query != null)
+        List<Student> result = query.getResultList();
+        if(result.contains(result.get(0).getsPass())) {
             return true;
-        else return false;
+        }
+        else {
+            System.out.println("Your email and password combination are invalid.");
+            return false;
+        }
     }//validateStudent()
 
     public List<Student> registerStudentToCourse(String sEmail, int cId) {
