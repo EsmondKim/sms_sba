@@ -1,9 +1,9 @@
 package perscholas.jpa.entitymodels;
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-
-
+import java.util.Set;
 
 @Entity (name = "courses")
 @Table(name = "courses")
@@ -18,8 +18,8 @@ public class Course {
     @Column(name = "cInstructorName")
     private String cInstructorName;
 
-    @ManyToMany(mappedBy = "sCourses", fetch = FetchType.LAZY)
-    private List<Student> sCourses = new ArrayList<>();
+    @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY)
+    private Set<Student> students = new HashSet<>();
 
     public Course() {
 

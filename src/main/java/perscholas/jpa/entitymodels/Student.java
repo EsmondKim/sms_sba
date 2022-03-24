@@ -1,9 +1,11 @@
 package perscholas.jpa.entitymodels;
 
 import javax.persistence.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity (name = "students")
 @Table(name = "students")
@@ -18,7 +20,9 @@ public class Student {
         @Column(name = "sPass")
         private String sPass;
 
-        @Column(name = "sCourses")
+//        @Column(name = "sCourses")
+//        private ArrayList<Course> sCourses = new ArrayList<>();
+
         @ManyToMany(fetch=FetchType.LAZY)
         @JoinTable(name = "students_courses",
                 joinColumns = {
@@ -27,17 +31,17 @@ public class Student {
                 inverseJoinColumns = {
                     @JoinColumn(name = "cId", referencedColumnName = "cId",
                         nullable = false, updatable = false)}) //inverseJoinColumns
-        private List<Course> sCourses = new ArrayList<Course>();
+        private Set<Course> courses = new HashSet<>();
 
     public Student() {
 
         }
 
-        public Student(String sEmail, String sName, String sPass, List sCourses) {
+        public Student(String sEmail, String sName, String sPass, ArrayList sCourses) {
             this.sEmail = sEmail;
             this.sName = sName;
             this.sPass = sPass;
-            this.sCourses = sCourses;
+//            this.sCourses = sCourses;
         }
 
     public String getsEmail() {
@@ -64,13 +68,13 @@ public class Student {
         this.sPass = sPass;
     }
 
-    public List getsCourses() {
-        return sCourses;
-    }
-
-    public void setsCourses(List sCourses) {
-        this.sCourses = sCourses;
-    }
+//    public ArrayList getsCourses() {
+//        return sCourses;
+//    }
+//
+//    public void setsCourses(ArrayList sCourses) {
+//        this.sCourses = sCourses;
+//    }
 
     @Override
     public String toString() {
@@ -78,7 +82,7 @@ public class Student {
                 "sEmail='" + sEmail + '\'' +
                 ", sName='" + sName + '\'' +
                 ", sPass='" + sPass + '\'' +
-                ", sCourses=" + sCourses +
+//                ", sCourses=" + sCourses +
                 '}';
     }
 }//public class Student
