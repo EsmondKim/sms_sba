@@ -24,30 +24,29 @@ public class SMSRunner {
             String sEmail = sc.nextLine();
             System.out.println("Enter your password.");
             String sPass = sc.nextLine();
-            if(studentService.validateStudent(sEmail, sPass));
+                    if(studentService.validateStudent(sEmail, sPass)) {
+                        studentsCoursesService.getStudentCourses(sEmail);
 
-            studentsCoursesService.getStudentCourses(sEmail);
-
-            System.out.println("1. Register for a course. 2. Logout.");
-            int continueChoice = sc.nextInt();
-            sc.nextLine();
-                if(continueChoice == 1) {
-                    courseService.getAllCourses();
-                    System.out.println("Enter the course ID for the course you would like to register for.");
-                    int courseId = sc.nextInt();
-                    sc.nextLine();
-                    System.out.println(courseId);
-                    Student student = studentService.findById(sEmail);
-                    Course course = courseService.findById(courseId);
-                    StudentCourse studentCourse = new StudentCourse();
-                    studentCourse.setStudent(student);
-                    studentCourse.setCourse(course);
-                    studentsCoursesService.save(studentCourse);
-                }//if continueChoice
-                else if(continueChoice == 2) {
-                System.out.println("You have quit using the SMS system. Goodbye!");
-                }//else if continueChoice
-
+                        System.out.println("1. Register for a course. 2. Logout.");
+                        int continueChoice = sc.nextInt();
+                        sc.nextLine();
+                        if (continueChoice == 1) {
+                            courseService.getAllCourses();
+                            System.out.println("Enter the course ID for the course you would like to register for.");
+                            int courseId = sc.nextInt();
+                            sc.nextLine();
+                            System.out.println(courseId);
+                            Student student = studentService.findById(sEmail);
+                            Course course = courseService.findById(courseId);
+                            StudentCourse studentCourse = new StudentCourse();
+                            studentCourse.setStudent(student);
+                            studentCourse.setCourse(course);
+                            studentsCoursesService.save(studentCourse);
+                        }//if continueChoice
+                        else if (continueChoice == 2) {
+                            System.out.println("You have quit using the SMS system. Goodbye!");
+                        }//else if continueChoice
+                    }//if validateStudent()
 //            studentService.registerStudentToCourse(sEmail, courseId);
 
         }//if validateStudent() true

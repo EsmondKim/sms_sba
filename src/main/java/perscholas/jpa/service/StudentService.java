@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentService implements StudentDAO {
@@ -89,16 +90,16 @@ public class StudentService implements StudentDAO {
 
     public boolean validateStudent(String sEmail, String sPass) {
         EntityManager em = emFactoryObj.createEntityManager();
-        String sql = "SELECT s FROM students s WHERE s.sEmail = :sEmail AND s.sPass = :sPass";
+        String sql = "SELECT s FROM students s";
         TypedQuery<Student> query = em.createQuery(sql, Student.class);
         List<Student> result = query.getResultList();
-        if(result.contains(result.get(0).getsPass())) {
-            return true;
-        }
-        else {
-            System.out.println("Your email and password combination are invalid.");
-            return false;
-        }
+        for (int i = 0; i < result.size(); i++) {
+            if (sEmail.equals(result.get(i).getsEmail()) && sPass.equals(result.get(i).getsPass())) {
+                return true;
+            }//if statement
+        }//for loop
+        System.out.println("Invalid email and password combination.");
+        return false;
     }//validateStudent()
 
     public List<Student> registerStudentToCourse(String sEmail, int cId) {
